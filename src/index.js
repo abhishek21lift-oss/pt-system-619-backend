@@ -5,6 +5,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import rateLimit from 'express-rate-limit';
 import { createClient } from '@supabase/supabase-js';
+import WebSocket from 'ws';
 
 import clientsRouter from './routes/clients.js';
 import trainersRouter from './routes/trainers.js';
@@ -36,7 +37,9 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY, {
+  realtime: { transport: WebSocket },
+});
 
 app.use((req, _res, next) => {
   req.supabase = supabase;
