@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: fitness-dashboard-api
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: PORT
+        value: "3001"
+      - key: CORS_ORIGIN
+        value: "https://your-frontend.vercel.app"
