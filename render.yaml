@@ -12,4 +12,4 @@ services:
       - key: PORT
         value: "3001"
       - key: CORS_ORIGIN
-        value: "https://your-frontend.vercel.app"
+        value: "https://pt-system-619-frontend.vercel.app"
